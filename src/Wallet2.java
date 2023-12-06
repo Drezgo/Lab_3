@@ -29,7 +29,7 @@ class Wallet2 {
     }
 
     //Створення початкового балансу та 16-значного коду
-    int inputBalance(double bal) {
+    private int inputBalance(double bal) {
         activeBalanceUAH=bal;
         for (int i=1; i<17; i++ ) {
             int randNum = random.nextInt(10);
@@ -41,12 +41,12 @@ class Wallet2 {
 
 
     //типізований параметризований метод
-    double buy10USD(double volume) {
+    private double buy10USD(double volume) {
         activeBalanceUAH -= volume * exchangeUSD;
         activeBalanceUSD += 10;
         return volume * exchangeUSD;
     }
-    int buy10USD(int volume) {
+    private int buy10USD(int volume) {
         activeBalanceUAH -= volume * exchangeUSD;
         activeBalanceUSD += 10;
         return (int) (volume * exchangeUSD);
@@ -54,7 +54,7 @@ class Wallet2 {
 
 
     //Статистика кожної ітерації(перевантажений метод)
-    void statistics() {
+    private void statistics() {
         System.out.println("_____________________________2ий гаманець_____________________________________________________");
         System.out.println("Ваш унікальний код рахунку: " + uniCode.toString());
         System.out.println("Баланс Вашої крартки: " + (double) Math.round(activeBalanceUAH * 100) /100 + " гривень");
@@ -104,4 +104,20 @@ class Wallet2 {
     public void setExchangeEUR(double exchangeEUR) {
         this.exchangeEUR = exchangeEUR;
     }
+
+    //___ІНКАПСУЛЬОВАНІ МЕТОДИ____________
+    public void inputBalanceDemo(double bal){ //<<<<<<<<<<<<<--------------------------2
+        inputBalance(bal);
+    }
+    public double buy10USDDemo(double volume){
+        return buy10USD(volume);
+    }
+    public double buy10USDDemo(int volume){
+        return buy10USD(volume);
+    }
+    public void statisticsDemo(){
+        statistics();
+    }
+
 }
+

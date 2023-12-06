@@ -4,13 +4,16 @@ import java.util.Scanner;
 
 class Wallet3 {
     //Створюю клас з рахунками всіх карток
-    private double activeBalanceUAH = 0;
-    private double activeBalanceUSD = 0;
-    private double activeBalanceEUR = 0;
-    private double exchangeUSD = 36.93;
+    static private double activeBalanceUAH = 0;
+    static double activeBalanceUSD;
+    static {
+        activeBalanceUSD=0; //<<<<<<<<<<------------------------3
+    }
+    private static double activeBalanceEUR = 0;
+    static private double exchangeUSD = 36.93;
     private double exchangeEUR = 39.33;
     //створюю (клас)об'єкт для унікального 16-значного коду
-    StringBuilder uniCode = new StringBuilder();
+    static StringBuilder uniCode = new StringBuilder();
     Random random = new Random();
     Scanner scan = new Scanner(System.in);
 
@@ -28,8 +31,9 @@ class Wallet3 {
     }
 
     //Створення початкового балансу та 16-значного коду
-    int inputBalance(double activeBalanceUAH) {
-                for (int i=1; i<17; i++ ) {
+    int inputBalance(double BalanceUAH) {
+        activeBalanceUAH = BalanceUAH;
+        for (int i=1; i<17; i++ ) {
             int randNum = random.nextInt(10);
             uniCode.append(randNum);
             if (i%4==0) uniCode.append(' ');
@@ -44,7 +48,7 @@ class Wallet3 {
         activeBalanceUSD += 10;
         return volume * exchangeUSD;
     }
-    int buy10USD(int volume) {
+    static int buy10USD(int volume) { //<-----------------------------3
         activeBalanceUAH -= volume * exchangeUSD;
         activeBalanceUSD += 10;
         return (int) (volume * exchangeUSD);
@@ -52,7 +56,7 @@ class Wallet3 {
 
 
     //Статистика кожної ітерації(перевантажений метод)
-    void statistics() {
+    static void statistics() {
         System.out.println("_____________________________3ій гаманець_____________________________________________________");
         System.out.println("Ваш унікальний код рахунку: " + uniCode.toString());
         System.out.println("Баланс Вашої крартки: " + (double) Math.round(activeBalanceUAH * 100) /100 + " гривень");
@@ -102,3 +106,4 @@ class Wallet3 {
         this.exchangeEUR = exchangeEUR;
     }
 }
+

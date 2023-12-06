@@ -5,8 +5,8 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         Wallet wallet = new Wallet();
-        Wallet2 wallet2 = new Wallet2(0,0,0,36.93,39.33);
-        Wallet3 wallet3 = new Wallet3(0,0,0,36.93,39.33);
+        Wallet2 wall2 = new Wallet2(0,0,0,36.93,39.33);
+        Wallet3 wall3 = new Wallet3(0,0,0,36.93,39.33);
 
         //Змінна для зупинки безкінечного циклу
         boolean activeSession = true;
@@ -16,15 +16,16 @@ public class Main {
         System.out.println("           Створимо власний рахунок: ");
         wallet.inputBalance();
 
-        wallet2.inputBalance(10000);
-        wallet3.inputBalance(10000);
+        wall2.inputBalanceDemo(10000);
+        wall3.inputBalance(10000);
 
         while (activeSession) {
             wallet.statistics();
-            wallet2.statistics();
-            wallet3.setExchangeUSD(36.93);//<<<<<<<<<<<<------------------------
-            System.out.println("__________________________ "+wallet3.getExchangeUSD()+" $________________________________");//<<<<<<<-----------
-            wallet3.statistics();
+            wall2.statisticsDemo();
+            System.out.println("Чи однаковий курс гаманців - " + wallet.isRivne());//<<<<<<<<<<<<------------------------
+            wall3.setExchangeUSD(36.93);//<<<<<<<<<<<<------------------------
+            System.out.println("__________________________ "+wall3.getExchangeUSD()+" $________________________________");//<<<<<<<-----------
+            Wallet3.statistics();
             System.out.println("Оберіть наступну дію: ");
             System.out.println("[1]  Конвертувати валюту у USD");
             System.out.println("[2]  Конвертувати валюту у EUR");
@@ -50,10 +51,10 @@ public class Main {
                     System.out.println(wallet.buy10USD(10)+" гривень");
                     break;
                 case 5:
-                    System.out.println(wallet2.buy10USD(10)+" гривень");
+                    System.out.println(wall2.buy10USDDemo(10.0) +" гривень");
                     break;
                 case 6:
-                    System.out.println(wallet3.buy10USD(10)+" гривень");
+                    System.out.println(Wallet3.buy10USD(10)+" гривень");
                     break;
                 case 0:
                     activeSession=false;

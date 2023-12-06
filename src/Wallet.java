@@ -4,12 +4,14 @@ import java.util.Random;
 import java.util.Scanner;
 
 class Wallet {
+    Wallet2 wallet2 = new Wallet2();
+    Wallet3 wallet3 = new Wallet3();
     //Створюю клас з рахунками всіх карток
     private double activeBalanceUAH = 0;
     private double activeBalanceUSD = 0;
     private double activeBalanceEUR = 0;
-    private double exchangeUSD = 36.93;
-    private double exchangeEUR = 39.33;
+    final double exchangeUSD = 36.93;
+    final double exchangeEUR = 39.33;
     //створюю (клас)об'єкт для унікального 16-значного коду
     StringBuilder uniCode = new StringBuilder();
     Random random = new Random();
@@ -17,12 +19,12 @@ class Wallet {
 
 
     //конструктори
-    Wallet(double activeBalanceUAH, double activeBalanceUSD, double activeBalanceEUR, double exchangeUSD, double exchangeEUR) {
+    Wallet(double activeBalanceUAH, double activeBalanceUSD, double activeBalanceEUR) {
         this.activeBalanceUAH = activeBalanceUAH;
         this.activeBalanceUSD = activeBalanceUSD;
         this.activeBalanceEUR = activeBalanceEUR;
-        this.exchangeUSD = exchangeUSD;
-        this.exchangeEUR = exchangeEUR;
+//        this.exchangeUSD = exchangeUSD;
+//        this.exchangeEUR = exchangeEUR;
     }
 
     Wallet() {
@@ -70,6 +72,9 @@ class Wallet {
         return (int) (volume * exchangeUSD);
     }
 
+    boolean isRivne() {
+        return wallet2.getActiveBalanceUSD() == wallet3.getExchangeUSD();
+    }
 
     //Статистика кожної ітерації (перевантажений метод)
     void statistics() {
@@ -115,11 +120,11 @@ class Wallet {
         this.activeBalanceEUR = activeBalanceEUR;
     }
 
-    public void setExchangeUSD(double exchangeUSD) {
-        this.exchangeUSD = exchangeUSD;
-    }
-
-    public void setExchangeEUR(double exchangeEUR) {
-        this.exchangeEUR = exchangeEUR;
-    }
+//    public void setExchangeUSD(double exchangeUSD) {
+//        this.exchangeUSD = exchangeUSD;
+//    }
+//
+//    public void setExchangeEUR(double exchangeEUR) {
+//        this.exchangeEUR = exchangeEUR;
+//    }
 }
